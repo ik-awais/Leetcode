@@ -4,20 +4,21 @@ without duplicate characters.
 */
 #include <iostream>
 #include <string>
-using namespace std;
 
 class Solution {
 public:
-    int lengthOfLongestSubstring(string s) {
-        string substr = "";
+    int lengthOfLongestSubstring(std::string s) {
+        std::string substr = "";
         int count = 0;
 
         for (char c : s) {
-            while (substr.find(c) != string::npos) {
+            while (substr.find(c) != std::string::npos) {
                 substr.erase(0, 1);
             }
             substr.push_back(c);
-            count++;
+            if ((int)substr.size() > count) {
+                count = substr.size();
+            }
         }
 
         return count;
